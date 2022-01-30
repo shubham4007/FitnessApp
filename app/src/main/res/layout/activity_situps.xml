@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Situps"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:layout_marginTop="48dp"
+        android:text="Sit ups"
+        android:textColor="#3BA8BE"
+        android:textSize="52dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/situps"
+        android:layout_marginTop="120dp"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="60dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="60"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="70sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/done"
+        android:layout_width="271dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="50dp"
+        android:text="DONE!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+</LinearLayout>
