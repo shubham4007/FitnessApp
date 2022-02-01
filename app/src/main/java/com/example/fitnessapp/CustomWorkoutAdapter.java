@@ -32,9 +32,6 @@ public class CustomWorkoutAdapter extends RecyclerView.Adapter<CustomWorkoutAdap
         final CustomViewHolder customViewHolder = new CustomViewHolder(view);
         customViewHolder.galleryLayout.setVisibility(View.GONE);
 
-        /**
-         * Make the entire CardView Clickable
-         */
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +49,6 @@ public class CustomWorkoutAdapter extends RecyclerView.Adapter<CustomWorkoutAdap
     public void onBindViewHolder(@NonNull final CustomViewHolder viewHolder, int i) {
         Workout workout = workouts.get(i);
         viewHolder.setIsRecyclable(false);
-        Log.i("Custom",i + workouts.get(i).toString());
         viewHolder.time.setText("Time " + workout.getTime());
         viewHolder.date.setText(workout.getDate());
         viewHolder.jumpingJacks.setText(String.format("Jumping Jacks: %s", workout.getJumpingjack()));
@@ -60,43 +56,31 @@ public class CustomWorkoutAdapter extends RecyclerView.Adapter<CustomWorkoutAdap
         viewHolder.situp.setText(String.format("Situps: %s", workout.getSitups()));
         viewHolder.squats.setText(String.format("Squats: %s", workout.getSquats()));
 
-
-
     }
 
     @Override
     public int getItemCount() {
         return workouts.size();
     }
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
 
         protected TextView time;
         protected TextView date;
-
         protected TextView jumpingJacks;
         protected TextView pushup;
         protected TextView situp;
         protected TextView squats;
-
-
         protected LinearLayout galleryLayout;
 
         public CustomViewHolder(View view){
             super(view);
             this.time  = view.findViewById(R.id.time);
             this.date = view.findViewById(R.id.date);
-
             this.jumpingJacks = view.findViewById(R.id.jumpingjack);
             this.pushup = view.findViewById(R.id.pushups);
             this.situp = view.findViewById(R.id.situps);
             this.squats = view.findViewById(R.id.squats);
-
-
             this.galleryLayout = view.findViewById(R.id.galleryLayout);
         }
     }

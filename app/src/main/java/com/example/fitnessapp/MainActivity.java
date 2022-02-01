@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.inputUsername);
         password = findViewById(R.id.inputPassword);
 
-        String abc = dbHandler.GetUsers().toString();
-        //Toast.makeText(this, abc, Toast.LENGTH_SHORT).show();
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

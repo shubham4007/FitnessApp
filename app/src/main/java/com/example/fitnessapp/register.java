@@ -39,11 +39,6 @@ public class register extends AppCompatActivity {
                 DbHandler dbHandler = new DbHandler(register.this);
                 dbHandler.insertUserDetails(email_text,password_text,age_text,height_text,weight_text);
 
-                ArrayList<HashMap<String, String>> userList = new ArrayList<>();
-                userList = dbHandler.GetUsers();
-                System.out.println(userList);
-
-
                 Toast.makeText(register.this, "User Registeration Successfull", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(register.this,Dashboard.class));
             }

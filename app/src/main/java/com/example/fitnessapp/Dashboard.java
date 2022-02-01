@@ -47,12 +47,5 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        //Toast.makeText(this,workout.getJumpingjack() + workout.getPushups() + workout.getSitups() + workout.getSquats() , Toast.LENGTH_SHORT).show();
-        //System.out.println("Details");
-        //System.out.println(workout.getJumpingjack() + workout.getPushups() + workout.getSitups() + workout.getSquats());
-        //Log.i("Details",workout.getJumpingjack() + workout.getPushups() + workout.getSitups() + workout.getSquats());
-        ArrayList<HashMap<String, String>> userList = new ArrayList<>();
-        userList =dbHandlerWorkout.GetHistory();
-        Log.i("Workout",userList.toString());
     }
 }

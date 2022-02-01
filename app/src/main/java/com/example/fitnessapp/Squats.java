@@ -47,26 +47,20 @@ public class Squats extends AppCompatActivity {
             public void onClick(View view) {
                 is_running = false;
                 workout.setSquats(timer.getText().toString());
-                Log.i("Workout",currentDate + currentTime + workout.getJumpingjack() + workout.getSitups() + workout.getPushups() + workout.getPushups());
+                workout.setDate(currentDate);
+                workout.setTime(currentTime);
                 dbHandlerWorkout.insertWorkoutDetails(currentDate,currentTime,workout.getJumpingjack(),workout.getSitups(),workout.getPushups(),workout.getPushups());
                 startActivity(new Intent(Squats.this,Dashboard.class));
                 finish();
 
             }
         });
-
-
-
-
-
-
         is_running = true;
         running_Timer();
     }
 
     private void running_Timer()
     {
-        //final TextView t_View = (TextView)findViewById(R.id.timerText);
         final Handler handle = new Handler();
         handle.post(new Runnable() {
             @Override
@@ -76,7 +70,6 @@ public class Squats extends AppCompatActivity {
                 int mins = (sec % 3600) / 60;
                 int secs = sec % 60;
                 String time_t = String .format(Locale.getDefault(), "    %d:%02d:%02d   ", hrs,mins, secs);
-                Log.i("Jumping jack 2",time_t);
                 timer.setText(time_t);
                 if (is_running) {
                     sec++;

@@ -36,8 +36,6 @@ public class DbHandler extends SQLiteOpenHelper {
         super(context,DB_NAME, null, DB_VERSION);
     }
 
-
-
     @Override
     public void onCreate(SQLiteDatabase db){
         String CREATE_USER_TABLE = "CREATE TABLE " + USER + "("
@@ -87,39 +85,9 @@ public class DbHandler extends SQLiteOpenHelper {
         long newRowId = db.insert(USER,null, cValues);
         db.close();
     }
-    // Get User Details
-    @SuppressLint("Range")
-    public ArrayList<HashMap<String, String>> GetUsers(){
 
-
-
-        System.out.println("ENTERED");
-        SQLiteDatabase db = this.getWritableDatabase();
-        ArrayList<HashMap<String, String>> userList = new ArrayList<>();
-        String query = "SELECT email, password, age, height, weight FROM "+ USER;
-        Cursor cursor = db.rawQuery(query,null);
-        System.out.println("Count");
-        System.out.println(cursor.getCount());
-        System.out.println(cursor);
-
-
-        while (cursor.moveToNext()){
-            HashMap<String,String> user = new HashMap<>();
-            user.put("Email",cursor.getString(0));
-            user.put("Password",cursor.getString(1));
-            user.put("Age",cursor.getString(2));
-            user.put("Height",cursor.getString(3));
-            user.put("Weight",cursor.getString(4));
-            userList.add(user);
-        }
-
-        return  userList;
-    }
-    // Get User Details based on userid
+    // Get User Details based on username
     public boolean GetUserByUserId(String email){
-        String name = "EMPTY";
-
-
         SQLiteDatabase db = this.getWritableDatabase();
         ArrayList<HashMap<String, String>> userList = new ArrayList<>();
         Cursor cursor = db.query(USER, new String[]{EMAIL, PASSWORD, AGE, HEIGHT, WEIGHT}, EMAIL+ "=?",new String[]{String.valueOf(email)},null, null, null, null);
@@ -132,12 +100,9 @@ public class DbHandler extends SQLiteOpenHelper {
             user.put("Weight",cursor.getString(4));
             userList.add(user);
         }
-        System.out.println(userList);
         if(userList.isEmpty()){
             return false;
-        }
-
-        else
+        } else
             return true;
     }
     void insertWorkoutDetails(String date, String time, String jumpingJack, String sitUps, String pushUps,String squats){
@@ -156,36 +121,7 @@ public class DbHandler extends SQLiteOpenHelper {
         long newRowId = db.insert(WORKOUT_LOG,null, cValues);
         db.close();
     }
-
-    @SuppressLint("Range")
-    public ArrayList<HashMap<String, String>> GetHistory(){
-
-
-
-        System.out.println("ENTERED");
-        SQLiteDatabase db = this.getWritableDatabase();
-        ArrayList<HashMap<String, String>> userList = new ArrayList<>();
-        String query = "SELECT date, time,JumpingJack, SitUps, PushUps, Squats   FROM "+ WORKOUT_LOG;
-        Cursor cursor = db.rawQuery(query,null);
-
-
-
-        while (cursor.moveToNext()){
-            HashMap<String,String> user = new HashMap<>();
-            user.put("date",cursor.getString(0));
-
-            user.put("time",cursor.getString(1));
-            user.put("JumpingJack",cursor.getString(2));
-            user.put("SitUps",cursor.getString(3));
-            user.put("PushUps",cursor.getString(4));
-            user.put("Squats",cursor.getString(5));
-            userList.add(user);
-        }
-
-        return  userList;
-    }
-
-
+    // Getting all workout data
     public ArrayList<Workout> getAllWorkouts(){
         ArrayList<Workout> workoutList = new ArrayList<>();
         String query = "SELECT * FROM " + WORKOUT_LOG;

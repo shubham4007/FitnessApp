@@ -43,7 +43,6 @@ public class JumpingJack extends AppCompatActivity {
             public void onClick(View view) {
                 is_running = false;
                 workout.setJumpingjack(t_View.getText().toString());
-                Log.i("Jumping jack",workout.getJumpingjack() + t_View.getText());
                 startActivity(new Intent(JumpingJack.this,PushUps.class));
                 finish();
 
@@ -57,7 +56,6 @@ public class JumpingJack extends AppCompatActivity {
 
     private void running_Timer()
     {
-        //final TextView t_View = (TextView)findViewById(R.id.timerText);
         final Handler handle = new Handler();
         handle.post(new Runnable() {
             @Override
@@ -67,7 +65,6 @@ public class JumpingJack extends AppCompatActivity {
                 int mins = (sec % 3600) / 60;
                 int secs = sec % 60;
                 String time_t = String .format(Locale.getDefault(), "    %d:%02d:%02d   ", hrs,mins, secs);
-                Log.i("Jumping jack 2",time_t);
                 t_View.setText(time_t);
                 if (is_running) {
                     sec++;
